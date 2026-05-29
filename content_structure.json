@@ -1,0 +1,177 @@
+{
+  "framework_version": "1.1",
+  "created_date": "2026-05-29",
+  "total_modules": 16,
+  "total_lessons": 47,
+  "lesson_groups": [
+    {
+      "group_id": "Part1",
+      "group_name": "微调基础理论",
+      "modules": [
+        {
+          "module_id": "1",
+          "module_name": "微调范式与硬件基础",
+          "lessons": [
+            {"id": "1.1", "title": "大模型概述与分类", "type": "theory", "duration_minutes": 45},
+            {"id": "1.2", "title": "微调策略选择：全量/LoRA/QLoRA/适配器", "type": "theory", "duration_minutes": 60},
+            {"id": "1.3", "title": "硬件选择与显存估算", "type": "theory", "duration_minutes": 45}
+          ]
+        },
+        {
+          "module_id": "2",
+          "module_name": "LoRA/QLoRA核心方法",
+          "lessons": [
+            {"id": "2.1", "title": "LoRA原理：ΔW=BA低秩分解", "type": "theory", "duration_minutes": 75},
+            {"id": "2.2", "title": "LoRA代码实现与参数配置", "type": "code", "duration_minutes": 90},
+            {"id": "2.3", "title": "QLoRA原理：NF4量化与双量化", "type": "theory", "duration_minutes": 60},
+            {"id": "2.4", "title": "QLoRA实战：单卡微调65B模型", "type": "code", "duration_minutes": 120}
+          ]
+        },
+        {
+          "module_id": "3",
+          "module_name": "强化学习框架",
+          "lessons": [
+            {"id": "3.1", "title": "强化学习基础：MDP/折扣因子/价值函数", "type": "theory", "duration_minutes": 90},
+            {"id": "3.2", "title": "策略梯度与Actor-Critic架构", "type": "theory", "duration_minutes": 75},
+            {"id": "3.3", "title": "PPO算法详解：裁剪机制与KL散度", "type": "theory", "duration_minutes": 90},
+            {"id": "3.4", "title": "PPO代码实现：CartPole/Atari游戏", "type": "code", "duration_minutes": 120},
+            {"id": "3.5", "title": "GRPO算法：组计算机制与双层KL控制", "type": "theory", "duration_minutes": 90},
+            {"id": "3.6", "title": "GRPO vs PPO：架构对比与优势分析", "type": "comparison", "duration_minutes": 45}
+          ]
+        },
+        {
+          "module_id": "4",
+          "module_name": "强化学习微调与对齐",
+          "lessons": [
+            {"id": "4.1", "title": "RLHF三阶段流程详解", "type": "theory", "duration_minutes": 90},
+            {"id": "4.2", "title": "奖励模型训练：排序数据与人类反馈", "type": "theory", "duration_minutes": 75},
+            {"id": "4.3", "title": "DPO算法：奖励-策略数学映射与实现", "type": "theory", "duration_minutes": 90},
+            {"id": "4.4", "title": "DPO实战：偏好数据准备与训练", "type": "code", "duration_minutes": 120},
+            {"id": "4.5", "title": "KTO与IPO：其他偏好优化方法", "type": "theory", "duration_minutes": 45}
+          ]
+        },
+        {
+          "module_id": "5",
+          "module_name": "模型轻量化与加速",
+          "lessons": [
+            {"id": "5.1", "title": "量化技术基础：精度体系与线性量化", "type": "theory", "duration_minutes": 60},
+            {"id": "5.2", "title": "量化因子详解：scale/zero_point/校准", "type": "theory", "duration_minutes": 75},
+            {"id": "5.3", "title": "量化感知训练(QAT)原理与实现", "type": "code", "duration_minutes": 90},
+            {"id": "5.4", "title": "INT8/INT4部署：TensorRT与vLLM量化推理", "type": "code", "duration_minutes": 90},
+            {"id": "5.5", "title": "知识蒸馏：模型压缩与部署实战", "type": "code", "duration_minutes": 90}
+          ]
+        }
+      ]
+    },
+    {
+      "group_id": "Part2",
+      "group_name": "数据工程体系",
+      "modules": [
+        {
+          "module_id": "6",
+          "module_name": "数据工程总览",
+          "lessons": [
+            {"id": "6.1", "title": "微调数据体系概览与构建流程", "type": "theory", "duration_minutes": 45},
+            {"id": "6.2", "title": "数据质量评估与清洗标准", "type": "theory", "duration_minutes": 45}
+          ]
+        },
+        {
+          "module_id": "7",
+          "module_name": "SFT数据完整链路",
+          "lessons": [
+            {"id": "7.1", "title": "SFT数据格式与构建方法", "type": "theory", "duration_minutes": 60},
+            {"id": "7.2", "title": "指令数据合成与多样性增强", "type": "code", "duration_minutes": 90},
+            {"id": "7.3", "title": "高质量数据筛选与质量控制", "type": "theory", "duration_minutes": 45}
+          ]
+        },
+        {
+          "module_id": "8",
+          "module_name": "偏好数据完整链路",
+          "lessons": [
+            {"id": "8.1", "title": "偏好数据构建：人类反馈与排序标注", "type": "theory", "duration_minutes": 60},
+            {"id": "8.2", "title": "AI反馈(RLAIF)与弱监督方法", "type": "theory", "duration_minutes": 45},
+            {"id": "8.3", "title": "DPO偏好数据准备与训练", "type": "code", "duration_minutes": 90}
+          ]
+        },
+        {
+          "module_id": "9",
+          "module_name": "CoT数据完整链路",
+          "lessons": [
+            {"id": "9.1", "title": "思维链Prompt设计原则", "type": "theory", "duration_minutes": 45},
+            {"id": "9.2", "title": "长推理数据合成与验证", "type": "code", "duration_minutes": 90}
+          ]
+        }
+      ]
+    },
+    {
+      "group_id": "Part3",
+      "group_name": "微调实战",
+      "modules": [
+        {
+          "module_id": "10",
+          "module_name": "工具链",
+          "lessons": [
+            {"id": "10.1", "title": "LLaMA-Factory：多模型配置与训练", "type": "code", "duration_minutes": 120},
+            {"id": "10.2", "title": "TRL库：SFT/PPO/DPO Trainer完整用法", "type": "code", "duration_minutes": 120},
+            {"id": "10.3", "title": "DeepSpeed ZeRO优化与分布式训练", "type": "code", "duration_minutes": 120},
+            {"id": "10.4", "title": "Unsloth加速：消费级GPU实战", "type": "code", "duration_minutes": 90}
+          ]
+        },
+        {
+          "module_id": "11",
+          "module_name": "强化学习微调实战",
+          "lessons": [
+            {"id": "11.1", "title": "RLHF完整Pipeline实现", "type": "code", "duration_minutes": 180},
+            {"id": "11.2", "title": "GRPO实战：DeepSeek-R1风格训练", "type": "code", "duration_minutes": 150}
+          ]
+        },
+        {
+          "module_id": "12",
+          "module_name": "高效微调技术",
+          "lessons": [
+            {"id": "12.1", "title": "QLoRA实战：多模型单卡微调", "type": "code", "duration_minutes": 150},
+            {"id": "12.2", "title": "长上下文扩展：RoPE插值与位置编码", "type": "code", "duration_minutes": 90}
+          ]
+        },
+        {
+          "module_id": "13",
+          "module_name": "多模型架构适配",
+          "lessons": [
+            {"id": "13.1", "title": "LLaMA/Qwen/ChatGLM/DeepSeek架构差异", "type": "theory", "duration_minutes": 60},
+            {"id": "13.2", "title": "跨模型适配器与权重转换", "type": "code", "duration_minutes": 90}
+          ]
+        },
+        {
+          "module_id": "14",
+          "module_name": "模型部署与应用",
+          "lessons": [
+            {"id": "14.1", "title": "vLLM批量推理与量化部署", "type": "code", "duration_minutes": 120},
+            {"id": "14.2", "title": "Ollama本地部署与API调用", "type": "code", "duration_minutes": 90},
+            {"id": "14.3", "title": "模型评估：自动基准与质量评估体系", "type": "code", "duration_minutes": 90}
+          ]
+        }
+      ]
+    },
+    {
+      "group_id": "Part4",
+      "group_name": "企业项目实战",
+      "modules": [
+        {
+          "module_id": "15",
+          "module_name": "行业项目实战",
+          "lessons": [
+            {"id": "15.1", "title": "垂直领域SFT：医疗/法律场景案例", "type": "project", "duration_minutes": 180},
+            {"id": "15.2", "title": "对话系统优化：RLHF完整Pipeline", "type": "project", "duration_minutes": 180},
+            {"id": "15.3", "title": "模型压缩上线：INT8量化+加速+部署闭环", "type": "project", "duration_minutes": 180}
+          ]
+        }
+      ]
+    }
+  ],
+  "phase5_review_notes": [
+    "审核结论：v1.1框架较v1.0增加RLHF深度(4.1-4.2)、DPO实战(4.4)、量化部署(5.4)等关键内容",
+    "修复项：原Module 4合并至强化学习框架(Part1)，新增Module 4专门讲RLHF/DPO/KTO对齐",
+    "Part2-3结构不变，课时数从43增至47节",
+    "缺失Adapter Tuning讨论：将通过外部资料补充，不单独开课时"
+  ]
+}

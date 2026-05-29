@@ -1,0 +1,27 @@
+# Requirements for Lesson 5.5: Knowledge Distillation
+# Model Compression and Deployment Practice
+
+# Core deep learning
+torch>=2.0.0
+transformers>=4.35.0
+
+# Knowledge Distillation utilities
+sentence-transformers>=2.2.0    # For embedding-based distillation
+scikit-learn>=1.3.0              # For metrics and evaluation
+
+# For TinyBERT-style intermediate layer matching
+accelerate>=0.25.0               # Model acceleration utilities
+
+# Optional: for advanced distillation techniques
+optimum>=1.14.0                  # Optimization toolkit for蒸馏
+
+# Utilities
+numpy>=1.24.0
+pandas>=2.0.0
+
+# Logging and visualization
+tensorboard>=2.15.0
+tqdm>=4.66.0
+
+# For model checkpointing
+safetensors>=0.4.0

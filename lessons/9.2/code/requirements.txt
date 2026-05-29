@@ -1,0 +1,5 @@
+torch>=2.0.0
+transformers>=4.35.0
+sympy>=1.12
+numpy>=1.24.0
+anthropic>=0.18.0

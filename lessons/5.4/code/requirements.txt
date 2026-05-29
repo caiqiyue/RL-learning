@@ -1,0 +1,29 @@
+# Requirements for Lesson 5.4: INT8/INT4 Deployment
+# TensorRT and vLLM Quantized Inference
+
+# Core deep learning
+torch>=2.0.0
+transformers>=4.35.0
+
+# Quantization
+autoawq>=0.2.0          # AWQ quantization
+gptq>=0.4.0              # GPTQ quantization (optional alternative)
+accelerate>=0.25.0        # Model loading utilities
+
+# vLLM for high-throughput inference
+# Note: vLLM requires CUDA 11.8+ and is best installed in a separate conda env
+# Install with: pip install vllm
+vllm>=0.3.0
+
+# TensorRT dependencies (complex setup - see notes in deploy_trt.py)
+# Note: TensorRT requires CUDA installation which is complex for this exercise
+# Install TensorRT from: https://developer.nvidia.com/tensorrt/download
+# tensorrt>=8.6.0
+
+# Optional: for benchmark visualization
+numpy>=1.24.0
+pandas>=2.0.0
+
+# Utilities
+safetensors>=0.4.0       # Safe model weight loading
+accelerate>=0.25.0       # Model acceleration utilities

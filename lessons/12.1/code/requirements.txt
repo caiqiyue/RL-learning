@@ -1,0 +1,17 @@
+# QLoRA multi-model fine-tuning dependencies
+# Core libraries
+transformers>=4.36.0
+peft>=0.7.0
+bitsandbytes>=0.41.0
+accelerate>=0.25.0
+scipy>=1.11.0
+
+# Data processing
+datasets>=2.14.0
+torch>=2.0.0
+numpy>=1.24.0
+
+# Utilities
+tqdm>=4.66.0
+pyyaml>=6.0
+jsonlines>=4.0.0

@@ -1,0 +1,91 @@
+{
+  "course_name": "大模型微调与强化学习",
+  "course_name_en": "LLM Fine-tuning with Reinforcement Learning",
+  "framework_version": "1.0",
+  "created_date": "2026-05-29",
+  "target_audience": [
+    "AI从业者",
+    "算法工程师",
+    "研究大模型微调的研究者",
+    "希望深入理解RLHF/DPO等技术原理的开发者"
+  ],
+  "prerequisites": [
+    "Python编程基础",
+    "深度学习基础（CNN/RNN/Transformer）",
+    "PyTorch使用经验",
+    "线性代数基础（矩阵分解概念）",
+    "概率论基础"
+  ],
+  "learning_objectives": [
+    "理解大模型微调的核心技术：LoRA/QLoRA/适配器",
+    "掌握强化学习基础理论：MDP/价值函数/策略梯度",
+    "深入理解PPO/GRPO/DPO等RL算法原理",
+    "掌握RLHF完整流程与工程实现",
+    "掌握模型量化技术与企业级部署方案",
+    "具备使用主流工具链（LLaMA-Factory/TRL/DeepSpeed）的能力"
+  ],
+  "total_duration_hours": 60,
+  "total_lessons": 47,
+  "course_outline": {
+    "Part1": {"name": "微调基础理论", "modules": 4, "lessons": 13},
+    "Part2": {"name": "数据工程体系", "modules": 4, "lessons": 10},
+    "Part3": {"name": "微调实战", "modules": 6, "lessons": 17},
+    "Part4": {"name": "企业项目实战", "modules": 1, "lessons": 3}
+  },
+  "source_materials": [
+    {
+      "id": "sm_001",
+      "file": "1. 模型微调概览与硬件选取.md",
+      "path": "raw-material/1. 模型微调概览与硬件选取.md",
+      "topics": ["大模型概述", "微调策略对比", "硬件选择", "框架概览"]
+    },
+    {
+      "id": "sm_002",
+      "file": "2.Lora微调原理详解.md",
+      "path": "raw-material/2.Lora微调原理详解.md",
+      "topics": ["LoRA原理", "低秩分解", "本征维度", "代码实现"]
+    },
+    {
+      "id": "sm_003",
+      "file": "3.QLoRA微调原理详解.md",
+      "path": "raw-material/3.QLoRA微调原理详解.md",
+      "topics": ["QLoRA原理", "NF4量化", "双量化", "分页优化器"]
+    },
+    {
+      "id": "sm_004",
+      "file": "4.强化学习PPO详解.md",
+      "path": "raw-material/4.强化学习PPO详解.md",
+      "topics": ["PPO算法", "MDP框架", "价值函数", "裁剪机制"]
+    },
+    {
+      "id": "sm_005",
+      "file": "5.RLHF详解.md",
+      "path": "raw-material/5.RLHF详解.md",
+      "topics": ["RLHF流程", "奖励模型", "人类反馈", "三阶段框架"]
+    },
+    {
+      "id": "sm_006",
+      "file": "6. 强化学习微调DPO详解.md",
+      "path": "raw-material/6. 强化学习微调DPO详解.md",
+      "topics": ["DPO原理", "偏好优化", "Bradley-Terry", "损失函数"]
+    },
+    {
+      "id": "sm_007",
+      "file": "7.GRPO详解.md",
+      "path": "raw-material/7.GRPO详解.md",
+      "topics": ["GRPO算法", "组计算机制", "双层KL控制", "过程监督"]
+    },
+    {
+      "id": "sm_008",
+      "file": "8.大模型量化与蒸馏技术详解.md",
+      "path": "raw-material/8.大模型量化与蒸馏技术详解.md",
+      "topics": ["量化技术", "精度体系", "量化感知训练", "量化决策树"]
+    },
+    {
+      "id": "sm_009",
+      "file": "DeepSeek R1 论文精读与复现.pdf",
+      "path": "raw-material/DeepSeek R1 论文精读与复现.pdf",
+      "topics": ["DeepSeek-R1", "GRPO实战", "论文精读"]
+    }
+  ]
+}

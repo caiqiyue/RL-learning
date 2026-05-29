@@ -1,0 +1,91 @@
+### LLaMA-Factory Training Configuration
+### Model: LLaMA-3-8B-Instruct with LoRA fine-tuning
+
+# ==================== Model & Data ====================
+model_name: LLaMA-3-8B-Instruct
+dataset: my_instruct_data
+output_dir: ./output/llama3-8b-lora
+
+# ==================== Model Type ====================
+model_type: llama3
+torch_dtype: bfloat16
+use_flash_attention: true
+
+# ==================== Training Hyperparameters ====================
+stage: sft
+learning_rate: 5.0e-5
+num_train_epochs: 3
+per_device_train_batch_size: 4
+gradient_accumulation_steps: 4
+max_grad_norm: 1.0
+warmup_ratio: 0.05
+weight_decay: 0.01
+scheduler: cosine
+
+# ==================== LoRA Configuration ====================
+use_lora: true
+lora_rank: 8
+lora_alpha: 16
+lora_dropout: 0.05
+lora_target: all
+# target_modules:
+#   - q_proj
+#   - k_proj
+#   - v_proj
+#   - o_proj
+#   - gate_proj
+#   - up_proj
+#   - down_proj
+
+# ==================== LoRA+ Configuration (optional) ====================
+# loraplus_lr_ratio: 16.0
+
+# ==================== QLoRA Quantization (optional, comment out if not needed) ====================
+# quantization_bit: 4
+# bnb_4bit_compute_dtype: bfloat16
+# bnb_4bit_use_double_quant: true
+# bnb_4bit_quant_type: nf4
+
+# ==================== Gradient Checkpointing ====================
+gradient_checkpointing: true
+
+# ==================== Evaluation ====================
+eval_strategy: steps
+eval_steps: 500
+per_device_eval_batch_size: 4
+
+# ==================== Logging & Saving ====================
+logging_steps: 10
+save_steps: 500
+save_total_limit: 2
+report_to: tensorboard
+
+# ==================== DeepSpeed (optional, uncomment to enable) ====================
+# deepspeed: examples/deepspeed/ds_config.json
+
+# ==================== Misc ====================
+cutoff_len: 2048
+preprocessing_num_workers: 8
+```
+
+### Alternative: QLoRA Configuration for 24GB GPU
+### Uncomment quantization section above to use QLoRA
+### With QLoRA, you can use larger batch size and rank
+
+# ==================== QLoRA Example (for single 3090/4090) ====================
+# quantization_bit: 4
+# bnb_4bit_compute_dtype: bfloat16
+# bnb_4bit_use_double_quant: true
+# 
+# lora_rank: 64
+# lora_alpha: 128
+# per_device_train_batch_size: 2
+# gradient_accumulation_steps: 8
+
+### Alternative: Full Fine-tuning Configuration
+### WARNING: Requires 80GB+ GPU memory
+
+# use_lora: false
+# per_device_train_batch_size: 1
+# gradient_accumulation_steps: 16
+# learning_rate: 1.0e-5

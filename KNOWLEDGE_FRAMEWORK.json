@@ -1,0 +1,110 @@
+{
+  "framework_version": "1.0",
+  "created_date": "2026-05-29",
+  "course_name": "大模型微调与强化学习",
+  "core_concepts": [
+    {
+      "id": "预训练大模型",
+      "definition": "基于海量通用数据训练，具备通用知识和强泛化能力的大规模AI模型，通过预训练+微调范式适配垂直场景",
+      "prerequisites": [],
+      "related": ["微调", "LoRA", "QLoRA"]
+    },
+    {
+      "id": "微调",
+      "definition": "在预训练模型基础上，使用特定任务数据进一步训练，使模型适应垂直领域或特定任务",
+      "prerequisites": ["预训练大模型"],
+      "related": ["全量微调", "LoRA", "QLoRA", "SFT"]
+    },
+    {
+      "id": "全量微调",
+      "definition": "更新模型所有参数，显存占用最大(约4×参数量 GB)，适合大规模标注数据场景",
+      "prerequisites": ["微调"],
+      "related": ["LoRA", "QLoRA"],
+      "trade_off": "性能最优但资源消耗大"
+    },
+    {
+      "id": "LoRA",
+      "definition": "Low-Rank Adaptation，通过低秩矩阵分解ΔW=BA减少可训练参数，典型rank=8~64，参数减少可达99%",
+      "prerequisites": ["微调", "线性代数基础"],
+      "related": ["QLoRA", "本征维度"],
+      "key_formula": "h = W₀x + BAx, B∈R^(d×r), A∈R^(r×k), r << min(d,k)"
+    },
+    {
+      "id": "QLoRA",
+      "definition": "量化版LoRA，4-bit NF4量化基础模型+LoRA适配器，可单卡(48GB)微调65B参数模型",
+      "prerequisites": ["LoRA", "量化基础"],
+      "related": ["NF4量化", "双量化", "分页优化器"],
+      "key_advantage": "显存效率：65B模型仅需48GB GPU"
+    },
+    {
+      "id": "强化学习",
+      "definition": "智能体通过与环境交互最大化累积奖励的范式，核心包括MDP五要素、价值函数、策略梯度",
+      "prerequisites": ["概率基础"],
+      "related": ["PPO", "GRPO", "RLHF"],
+      "core_elements": ["状态(S)", "动作(A)", "奖励(R)", "策略(π)", "折扣因子(γ)"]
+    },
+    {
+      "id": "PPO",
+      "definition": "Proximal Policy Optimization，近端策略优化算法，RLHF的核心，采用Actor-Critic架构和裁剪机制",
+      "prerequisites": ["强化学习基础", "策略梯度"],
+      "related": ["GRPO", "RLHF", "优势函数"],
+      "key_mechanism": "裁剪防止策略突变，优势函数A(s,a)=Q(s,a)-V(s)"
+    },
+    {
+      "id": "GRPO",
+      "definition": "Group Relative Policy Optimization，DeepSeek改进的RL算法，无需Value网络，通过组内标准化估计优势",
+      "prerequisites": ["PPO"],
+      "related": ["PPO", "组计算", "双层KL控制"],
+      "key_innovation": "Group Computation替代Value网络，显著降低方差"
+    },
+    {
+      "id": "RLHF",
+      "definition": "Reinforcement Learning from Human Feedback，基于人类反馈的强化学习，使模型输出符合人类偏好",
+      "prerequisites": ["强化学习", "SFT"],
+      "related": ["PPO", "DPO", "奖励模型"],
+      "three_stages": ["SFT监督策略", "奖励模型训练", "PPO强化学习"]
+    },
+    {
+      "id": "DPO",
+      "definition": "Direct Preference Optimization，直接偏好优化，通过数学映射绕过独立奖励模型，直接优化偏好排序",
+      "prerequisites": ["RLHF", "Bradley-Terry模型"],
+      "related": ["RLHF", "偏好数据"],
+      "key_breakthrough": "发现最优策略与奖励函数的数学关系，可跳过奖励建模"
+    },
+    {
+      "id": "量化",
+      "definition": "将高精度浮点数(FP32/FP16)转换为低精度整数(INT8/INT4)以减少存储和计算需求",
+      "prerequisites": ["计算机组成原理"],
+      "related": ["QLoRA", "INT8", "INT4", "量化感知训练"],
+      "precision_levels": ["FP32", "FP16", "INT8", "INT4", "INT2"]
+    },
+    {
+      "id": "NF4量化",
+      "definition": "QLoRA专用4-bit非线性量化，量化点针对权重正态分布优化，在0附近更密集",
+      "prerequisites": ["量化", "正态分布"],
+      "related": ["QLoRA", "双量化"],
+      "quant_points": "[-1, -0.7, -0.3, -0.1, 0, 0.1, 0.3, 0.7, 1]"
+    }
+  ],
+  "technical_stack": {
+    "model_training": ["PyTorch", "HuggingFace PEFT", "Transformers", "DeepSpeed", "LLaMA-Factory", "TRL"],
+    "reinforcement_learning": ["TRL (PPO/DPO/KTO)", "OpenRLHF", "veRL"],
+    "quantization": ["bitsandbytes", "GPTQ", "AWQ", "SmoothQuant", "TensorRT"],
+    "inference": ["vLLM", "Ollama", "llama.cpp", "TensorRT-LLM"],
+    "evaluation": ["EleutherAI Eval Harness", "OpenCompass", "MT-Bench"]
+  },
+  "hardware_recommendations": {
+    "7B_model": {
+      "FP16": "RTX 4090 ×1",
+      "QLoRA_INT4": "RTX 3060 ×1"
+    },
+    "13B_model": {
+      "FP16": "RTX 4090 ×1 or A100 40GB ×1",
+      "QLoRA_INT4": "RTX 4090 ×1"
+    },
+    "70B_model": {
+      "FP16": "A100 80GB ×8",
+      "QLoRA_INT4": "A100 40GB ×2"
+    }
+  }
+}
